@@ -22,7 +22,6 @@ import java.util.Arrays;
     static double [] insertionSort (double a[]){
 
     	for(int i = 1;i < a.length;i++) {
-    		
     		double current = a[i];
     		
     		for (int j = i;j > 0;j--) {
