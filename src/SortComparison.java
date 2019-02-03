@@ -53,14 +53,71 @@ import java.util.Random;
     	recursiveQuick(a,0,n-1);
     	return a;
 
-    }//end quicksort
+    }
     
+    /**
+     * Sorts an array of doubles by partitioning it recursively and solving subarrays.
+     * @param a: array of doubles
+     * @param low: index of first array element
+     * @param high: index of last array element
+     */
     static void recursiveQuick (double a[], int low, int high) {
     	if(low<high) {
     		int pivotDepth = partition(a,low,high);
     		recursiveQuick(a,low,pivotDepth-1);	//sort array part left of pivot
     		recursiveQuick(a,pivotDepth+1,high); //sort array part right of pivot
     	}
+    }
+    
+    
+    /**
+     * Chooses a pivot as separator and puts all elements
+     * smaller than pivot on the left side of it and all
+     * elements bigger than pivot on its right side.
+     * @param a: array of doubles
+     * @param low: index of first array element
+     * @param high: index of last array element
+     * @return index of new pivot for next partition
+     */
+    static int partition (double a[],int low, int high) {
+    	int i=low;
+    	int j=high+1;
+    	double pivot = a[low];	//set pivot as first element of shuffled array
+    	while(true) {			//unlimited loop, break when markers cross or reach beginning/end of array
+    		
+    		// move marker i from first element towards end of array
+    		// until you reach an element that is bigger than pivot
+    		while(Double.compare(a[++i], pivot)<0) {	
+    			
+    			// break when reaching end of array
+    			if(i==high) {
+    				break;
+    			}
+    		}
+    		
+    		// move marker j from last element towards beginning of array
+    		// until you reach an element that is smaller than pivot
+    		while(Double.compare(pivot,a[--j])<0) {
+    			
+    			// break when reaching beginning of array
+    			if(j==low) {
+    				break;
+    			}
+    		}
+    		
+    		// in case markers cross, swap pivot with j
+    		if (i >= j) {
+    			break;
+    		}
+    		
+    		// swap small element with big element
+    		swap(a,i,j);
+    	}
+    	// move pivot to its position
+    	a[low]= a[j];
+    	a[j]=pivot;
+    	return j;
+    	
     }
     
     /**
@@ -79,6 +136,12 @@ import java.util.Random;
         }
     }
     
+    /**
+     * Takes an array of doubles and two indexes and swaps respective elements in array.
+     * @param a: array of doubles
+     * @param i: index of element to swap
+     * @param j: index of element to swap
+     */
     private static void swap(double [] a, int i, int j) {
     	double temp = a[i];
     	a[i] = a[j];
@@ -147,9 +210,9 @@ import java.util.Random;
 
         //todo: do experiments as per assignment instructions
     	double [] a = {3.0, 5.0, 1.0, 7.0, 2.0};
-    	double [] aSorted = SortComparison.insertionSort(a);
+    	double [] aSorted = SortComparison.quickSort(a);
     	System.out.println(Arrays.toString(aSorted));
     }
 
- }//end class
+ }
 
