@@ -45,6 +45,18 @@ import java.util.Random;
     static double [] quickSort (double a[]){
 	
 		 //todo: implement the sort
+    	shuffleMyArray(a);
+    	double pivot = a[0];
+    	for (int i=1;i<=a.length;i++) {
+    		for (int j=i;j>0;j--) {
+    			if (a[i]>pivot && a[j]<pivot) {
+    				double temp1 = a[i];
+    				double temp2 = a[j];
+    				a[i]= temp2;
+    				a[j]= temp1;
+    			}
+    		}
+    	}
     	return a;
 
     }//end quicksort
@@ -61,10 +73,14 @@ import java.util.Random;
         random.nextInt();
         for (int i = 0; i < n; i++) {
             int change = i + random.nextInt(n - i);
-            double temp = a[i];
-            a[i] = a[change];
-            a[change] = temp;
+            swap(a,i,change);
         }
+    }
+    
+    private static void swap(double [] a, int i, int j) {
+    	double temp = a[i];
+    	a[i] = a[j];
+    	a[j] = temp;
     }
 
 
