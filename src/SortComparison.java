@@ -45,21 +45,23 @@ import java.util.Random;
     static double [] quickSort (double a[]){
 	
 		 //todo: implement the sort
-    	shuffleMyArray(a);
-    	double pivot = a[0];
-    	for (int i=1;i<=a.length;i++) {
-    		for (int j=i;j>0;j--) {
-    			if (a[i]>pivot && a[j]<pivot) {
-    				double temp1 = a[i];
-    				double temp2 = a[j];
-    				a[i]= temp2;
-    				a[j]= temp1;
-    			}
-    		}
+    	int n = a.length;
+    	if (n <= 1) {
+    		return a;
     	}
+    	shuffleMyArray(a);
+    	recursiveQuick(a,0,n-1);
     	return a;
 
     }//end quicksort
+    
+    static void recursiveQuick (double a[], int low, int high) {
+    	if(low<high) {
+    		int pivotDepth = partition(a,low,high);
+    		recursiveQuick(a,low,pivotDepth-1);	//sort array part left of pivot
+    		recursiveQuick(a,pivotDepth+1,high); //sort array part right of pivot
+    	}
+    }
     
     /**
      * Shuffles an array of doubles randomly.
