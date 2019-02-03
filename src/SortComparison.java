@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 // -------------------------------------------------------------------------
 
@@ -47,6 +48,25 @@ import java.util.Arrays;
     	return a;
 
     }//end quicksort
+    
+    /**
+     * Shuffles an array of doubles randomly.
+     * This method is static, thus it can be called as Sort.Comparison.shuffleMyArray(a)
+     * @param a: A possibly (partially) sorted array of doubles.
+     * @return array randomly shuffled.
+     */
+    static void shuffleMyArray(double[] a) {
+        int n = a.length;
+        Random random = new Random();
+        random.nextInt();
+        for (int i = 0; i < n; i++) {
+            int change = i + random.nextInt(n - i);
+            double temp = a[i];
+            a[i] = a[change];
+            a[change] = temp;
+        }
+    }
+
 
     /**
      * Sorts an array of doubles using Merge Sort.
