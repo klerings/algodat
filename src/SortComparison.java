@@ -179,13 +179,32 @@ import java.util.Random;
      * @param a: An unsorted array of doubles.
      * @return after the method returns, the array must be in ascending sorted order.
      */
-    static double[] mergeSortRecursive (double a[]) {
+    static double[] mergeSortRecursive (double a[],int low, int high) {
     	
 
     	//todo: implement the sort
+    	
+    	//recursively separating the array in halves until it cannot be separated anymore
+    	if (low < high) {
+    		int mid = (low+(high-low))/2;
+    	
+    		mergeSortRecursive(a,low,mid);
+    		mergeSortRecursive(a,mid+1,high);
+    	
+    		recursiveMerge(a,low,mid,high);
+    	}
+    	
     	return a;
 	
-   }//end mergeSortRecursive
+   }
+    
+   static void recursiveMerge(double a[], int low, int mid, int high) {
+	   
+	   // copy array part of interest into auxiliary array
+	   //for (int position = low; position <= high; position++) {
+		   //aux[position] = a[position];
+	   //}
+   }
     	
     
     /**
