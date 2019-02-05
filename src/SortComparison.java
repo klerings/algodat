@@ -44,7 +44,6 @@ import java.util.Random;
      */
     static double [] quickSort (double a[]){
 	
-		 //todo: implement the sort
     	int n = a.length;
     	if (n <= 1) {
     		return a;
@@ -198,10 +197,21 @@ import java.util.Random;
      */
     static double [] selectionSort (double a[]){
 
-         //todo: implement the sort
+    	int n = a.length;
+    	for (int i=0;i<n;i++) {
+    		double smallest = a[i];
+    		int smallestIndex = i;
+    		for (int j=i+1;j<n;j++) {
+    			if (a[j]<smallest) {
+    				smallest = a[j];
+    				smallestIndex = j;
+    			}
+    		}
+    		swap(a,i,smallestIndex);
+    	}
     	return a;
 
-    }//end selectionsort
+    }
 
    
 
@@ -209,8 +219,8 @@ import java.util.Random;
     public static void main(String[] args) {
 
         //todo: do experiments as per assignment instructions
-    	double [] a = {3.0, 5.0, 1.0, 7.0, 2.0};
-    	double [] aSorted = SortComparison.quickSort(a);
+    	double [] a = {4.0,3.0, 2.0, 10.0, 12.0, 1.0, 5.0,6.0};
+    	double [] aSorted = SortComparison.selectionSort(a);
     	System.out.println(Arrays.toString(aSorted));
     }
 
