@@ -59,6 +59,18 @@ public class SortComparisonTest {
 
 	}
     
+    @Test
+	public void testquickSort() {
+    	
+    	double [] a = {4.0,3.0,2.0,10.0,12.0, 1.0,5.0,6.0};
+    	
+    	double [] aSortedExpeded = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSorted = SortComparison.quickSort(a);
+    	
+    	assertTrue("Checking quickSort for unsorted array",Arrays.equals(aSortedExpeded, aSorted));
+
+	}
+    
     /**
      *  Main Method.
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
