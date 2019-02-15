@@ -113,6 +113,28 @@ public class SortComparisonTest {
     	assertTrue("Checking mergeSortRecursive for unsorted array",Arrays.equals(aSortedExpected, aSorted));
 	}
     
+    @Test
+	public void testMergeRecursive() {
+    	//TODO
+    	}
+    
+
+	@Test
+	public void testMerge() {
+		//TODO
+	}
+    
+	@Test
+	public void testSelectionSort() {
+    	double [] a = {4.0,3.0,2.0,10.0,12.0,1.0,1.0,1.0,5.0,6.0};
+    	
+    	double [] aSortedExpected = {1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSorted = SortComparison.selectionSort(a);
+    	
+    	assertTrue("Checking selectionSort for unsorted array",Arrays.equals(aSortedExpected, aSorted));
+	}
+
+
     /**
      *  Main Method.
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
@@ -127,27 +149,4 @@ public class SortComparisonTest {
 
 }
 
-/*
-
-
-	@Test
-	public void testMergeRecursive() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testMerge() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSelectionSort() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testMain() {
-		fail("Not yet implemented");
-	}
-*/
 
