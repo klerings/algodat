@@ -165,13 +165,16 @@ import java.util.Random;
 
     static double[] mergeSortIterative (double a[]) {
 
-		 //todo: implement the sort
     	int size = a.length;
     	int low = 0;
     	int high = size-1;
-    	double [] aux = Arrays.copyOf(a,size);
+    	double [] aux = new double[size];
+    	
+    	// divide array into blocks size b
     	for (int b=1; b <= high-low; b = 2*b) {
+    		
     		for (int i = low; i<high; i += 2*b) {
+    			
     			int from = i;
     			int mid = i + b - 1;
     			int to = Integer.min(i+2*b-1, high);
