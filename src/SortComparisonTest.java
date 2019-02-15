@@ -51,24 +51,24 @@ public class SortComparisonTest {
     @Test
 	public void testInsertionSort() {
     	
-    	double [] a = {4.0,3.0,2.0,10.0,12.0, 1.0,5.0,6.0};
+    	double [] a = {4.0,3.0,2.0,10.0,12.0,1.0,1.0,1.0,5.0,6.0};
     	
-    	double [] aSortedExpeded = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSortedExpected = {1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
     	double [] aSorted = SortComparison.insertionSort(a);
     	
-    	assertTrue("Checking insertionSort for unsorted array",Arrays.equals(aSortedExpeded, aSorted));
+    	assertTrue("Checking insertionSort for unsorted array",Arrays.equals(aSortedExpected, aSorted));
 
 	}
     
     @Test
 	public void testquickSort() {
     	
-    	double [] a = {4.0,3.0,2.0,10.0,12.0, 1.0,5.0,6.0};
+    	double [] a = {4.0,3.0,2.0,10.0,12.0,1.0,1.0,1.0,5.0,6.0};
     	
-    	double [] aSortedExpeded = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSortedExpected = {1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
     	double [] aSorted = SortComparison.quickSort(a);
     	
-    	assertTrue("Checking quickSort for unsorted array",Arrays.equals(aSortedExpeded, aSorted));
+    	assertTrue("Checking quickSort for unsorted array",Arrays.equals(aSortedExpected, aSorted));
 
 	}
     
@@ -90,6 +90,29 @@ public class SortComparisonTest {
 		assertFalse("Checking shuffleMyArray for sorted array",Arrays.equals(aOld, a));
 	}
     
+    @Test
+	public void testMergeSortIterative() {
+    	
+    	double [] a = {4.0,3.0,2.0,10.0,12.0,1.0,1.0,1.0,5.0,6.0};
+    	
+    	double [] aSortedExpected = {1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSorted = SortComparison.mergeSortIterative(a);
+    	
+    	assertTrue("Checking mergeSortIterative for unsorted array",Arrays.equals(aSortedExpected, aSorted));
+
+	}
+    
+    @Test
+	public void testMergeSortRecursive() {
+
+    	double [] a = {4.0,3.0,2.0,10.0,12.0,1.0,1.0,1.0,5.0,6.0};
+    	
+    	double [] aSortedExpected = {1.0,1.0,1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSorted = SortComparison.mergeSortRecursive(a);
+    	
+    	assertTrue("Checking mergeSortRecursive for unsorted array",Arrays.equals(aSortedExpected, aSorted));
+	}
+    
     /**
      *  Main Method.
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
@@ -106,16 +129,6 @@ public class SortComparisonTest {
 
 /*
 
-
-	@Test
-	public void testMergeSortIterative() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testMergeSortRecursive() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testMergeRecursive() {
