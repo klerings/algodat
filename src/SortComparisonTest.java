@@ -2,7 +2,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +19,20 @@ import org.junit.runners.JUnit4;
  *
  *  @author
  *  @version HT 2019
+ *  
+ *  3) Algorithm performance comparison
+ *  (times in milliseconds)
+ *  
+ *  file/INSERT/QUICK/MERGE RECURSIVE/MERGE ITERATIVE/SELECTION
+ *  ----------------------------------------------------------------------
+ *  10 random/0.349207/x/x/x/x
+ *  100 random/0.460005/x/x/x/x
+ *  1000 random/9.897849/x/x/x/x
+ *  1000 few unique/7.830202/x/x/x/x
+ *  1000 nearly ordered/x/x/x/x/x
+ *  1000 reverse order/x/x/x/x/x
+ *  1000 sorted/x/x/x/x/x
+ *  
  */
 @RunWith(JUnit4.class)
 public class SortComparisonTest {
@@ -178,7 +197,29 @@ public class SortComparisonTest {
      */
     public static void main(String[] args)
     {
-        //TODO: implement this method
+        //read in file and create array of doubles
+    	int x = 1000;
+    	double [] doubles = new double [x];
+    	int counter = 0;
+    	  Scanner scan;
+    	    File file = new File("./files_to_sort/numbers1000Duplicates.txt");
+    	    try {
+    	        scan = new Scanner(file);
+    	        while(scan.hasNext())
+    	        {
+    	            doubles[counter] = Double.parseDouble(scan.next());
+    	            counter++;
+    	        }
+
+    	    } catch (FileNotFoundException e1) {
+    	            e1.printStackTrace();
+    	    }
+    	//time the sorting of the array
+    	    long startTime = System.nanoTime();
+    	    double [] aSorted = SortComparison.insertionSort(doubles);
+    	    long endTime = System.nanoTime();
+    	    double duration = (endTime - startTime)/1e6; 	//in milliseconds
+    	    System.out.println(duration+" milliseconds");
     }
     
     
