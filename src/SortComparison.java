@@ -62,9 +62,9 @@ import java.util.Random;
      */
     static void recursiveQuick (double a[], int low, int high) {
     	if(low<high) {
-    		int pivotDepth = partition(a,low,high);
-    		recursiveQuick(a,low,pivotDepth-1);	//sort array part left of pivot
-    		recursiveQuick(a,pivotDepth+1,high); //sort array part right of pivot
+    		int pivotPosition = partition(a,low,high);
+    		recursiveQuick(a,low,pivotPosition-1);	//sort array part left of pivot
+    		recursiveQuick(a,pivotPosition+1,high); //sort array part right of pivot
     	}
     }
     
@@ -76,7 +76,7 @@ import java.util.Random;
      * @param a: array of doubles
      * @param low: index of first array element
      * @param high: index of last array element
-     * @return index of new pivot for next partition
+     * @return right position of pivot
      */
     static int partition (double a[],int low, int high) {
     	int i=low;

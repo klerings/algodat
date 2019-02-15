@@ -84,7 +84,8 @@ public class SortComparisonTest {
     
     @Test
 	public void testPartition() {
-		//TODO
+    	double [] a = {5.0,8.0,11.0,4.0,9.0,2.0,3.0,1.0};
+    	assertEquals(4,SortComparison.partition(a, 0, a.length-1));
 	}
     
     @Test
