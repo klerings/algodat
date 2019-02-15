@@ -40,10 +40,18 @@ public class SortComparisonTest {
     }
 
 
-    // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
+    // TODO: add more tests here. Each line of code and each decision in Collinear.java should
     // be executed at least once from at least one test.
 
     // ----------------------------------------------------------
+    @Test
+	public void testInsertionSort() {
+    	double [] a = {4.0,3.0,2.0,10.0,12.0, 1.0,5.0,6.0};
+    	double [] aSorted = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	assertEquals("Checking insertionSort for unsorted array",aSorted,SortComparison.insertionSort(a));
+
+	}
+    
     /**
      *  Main Method.
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
@@ -58,10 +66,7 @@ public class SortComparisonTest {
 
 /*
 
-	@Test
-	public void testInsertionSort() {
-		fail("Not yet implemented");
-	}
+	
 
 	@Test
 	public void testQuickSort() {
