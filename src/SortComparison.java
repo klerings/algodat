@@ -112,7 +112,7 @@ import java.util.Random;
     		// swap small element with big element
     		swap(a,i,j);
     	}
-    	// move pivot to its position
+    	// move pivot to its k
     	a[low]= a[j];
     	a[j]=pivot;
     	return j;
@@ -166,6 +166,19 @@ import java.util.Random;
     static double[] mergeSortIterative (double a[]) {
 
 		 //todo: implement the sort
+    	int size = a.length;
+    	int low = 0;
+    	int high = size-1;
+    	double [] aux = new double [size];
+    	for (int b=1; b <= high-low; b = 2*b) {
+    		for (int i = low; i<high; i += 2*b) {
+    			int from = i;
+    			int mid = i + b - 1;
+    			int to = Integer.min(1+2*b-1, high);
+    			
+    			merge(a,aux,from,mid,to);
+    		}
+    	}
     	return a;
 	
     }//end mergesortIterative
@@ -179,31 +192,58 @@ import java.util.Random;
      * @param a: An unsorted array of doubles.
      * @return after the method returns, the array must be in ascending sorted order.
      */
-    static double[] mergeSortRecursive (double a[],int low, int high) {
+    static double[] mergeSortRecursive (double a[]) {
     	
-
-    	//todo: implement the sort
-    	
-    	//recursively separating the array in halves until it cannot be separated anymore
-    	if (low < high) {
-    		int mid = (low+(high-low))/2;
-    	
-    		mergeSortRecursive(a,low,mid);
-    		mergeSortRecursive(a,mid+1,high);
-    	
-    		recursiveMerge(a,low,mid,high);
-    	}
-    	
+    	double aux [] = new double [a.length];
+    	mergeRecursive(a,aux,0,a.length-1);
     	return a;
 	
    }
     
-   static void recursiveMerge(double a[], int low, int mid, int high) {
+   static void mergeRecursive (double a[],double aux[],int low, int high) {
+	   if (high <= low) {
+   		return;
+   		
+	   }
+   		//recursively separating the array in halves until it cannot be separated anymore
+   		int mid = low+(high-low)/2;
+		mergeRecursive(a,aux,low,mid);
+		mergeRecursive(a,aux,mid+1,high);
+
+		merge(a,aux,low,mid,high);	   
+   }
+    
+   /**
+    * Sorts an array by copying its values in an auxiliary array and copying
+    * them back in the right order by comparing them.
+    * 
+    * @param a: unsorted array of doubles
+    * @param aux: empty array with the length of a
+    * @param low,mid,high: marker for level of recursion
+    */
+   static void merge(double a[], double aux[], int low, int mid, int high) {
 	   
 	   // copy array part of interest into auxiliary array
-	   //for (int position = low; position <= high; position++) {
-		   //aux[position] = a[position];
-	   //}
+	   for (int k = low; k <= high; k++) {
+		   aux[k] = a[k];
+	   }
+
+	   int i = low;
+	   int j = mid +1;
+	   for (int k=low;k<=high;k++) {
+		   if (i>mid) {
+			   a[k] = aux[j++];
+		   }
+		   else if (j > high) {
+			   a[k] = aux[i++];
+		   }
+		   else if (aux[j]<aux[i]) {
+			   a[k] = aux[j++];
+		   }
+		   else {
+			   a[k] = aux[i++];
+		   }
+	   }
    }
     	
     
@@ -239,7 +279,7 @@ import java.util.Random;
 
         //todo: do experiments as per assignment instructions
     	double [] a = {4.0,3.0, 2.0, 10.0, 12.0, 1.0, 5.0,6.0};
-    	double [] aSorted = SortComparison.selectionSort(a);
+    	double [] aSorted = SortComparison.mergeSortIterative(a);
     	System.out.println(Arrays.toString(aSorted));
     }
 
