@@ -126,6 +126,12 @@ public class SortComparisonTest {
     @Test
 	public void testMergeRecursive() {
     	//TODO
+    	double [] a = {3.0,7.0,5.0,4.0,1.0};
+		double [] aux = new double [a.length];
+		double [] aAfterRecursion = {1.0,3.0,4.0,5.0,7.0};
+		
+		SortComparison.mergeRecursive(a,aux,0,a.length-1);
+		assertTrue("Checking recursive merge for unsorted array",Arrays.equals(aAfterRecursion, a));
     	}
     
 
