@@ -141,7 +141,7 @@ import java.util.Random;
      * @param i: index of element to swap
      * @param j: index of element to swap
      */
-    private static void swap(double [] a, int i, int j) {
+    static void swap(double [] a, int i, int j) {
     	double temp = a[i];
     	a[i] = a[j];
     	a[j] = temp;

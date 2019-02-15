@@ -86,8 +86,19 @@ public class SortComparisonTest {
 	public void testShuffleMyArray() {
 		double [] a = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
 		double [] aOld = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+		
 		SortComparison.shuffleMyArray(a);
+		
 		assertFalse("Checking shuffleMyArray for sorted array",Arrays.equals(aOld, a));
+	}
+    
+    @Test
+	public void testSwap() {
+		double [] a = {1.0,2.0,3.0,4.0};
+		double [] aSwappedExpected = {1.0,4.0,3.0,2.0};
+		
+		SortComparison.swap(a,1,3);
+		assertTrue("Checking swap for elements at index 1 and 3",Arrays.equals(aSwappedExpected, a));
 	}
     
     @Test
