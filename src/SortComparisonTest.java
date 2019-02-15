@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -71,6 +72,24 @@ public class SortComparisonTest {
 
 	}
     
+    @Test
+	public void testRecursiveQuick() {
+    	//TODO
+	}
+    
+    @Test
+	public void testPartition() {
+		//TODO
+	}
+    
+    @Test
+	public void testShuffleMyArray() {
+		double [] a = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+		double [] aOld = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+		SortComparison.shuffleMyArray(a);
+		assertFalse("Checking shuffleMyArray for sorted array",Arrays.equals(aOld, a));
+	}
+    
     /**
      *  Main Method.
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
@@ -80,32 +99,13 @@ public class SortComparisonTest {
     {
         //TODO: implement this method
     }
+    
+    
 
 }
 
 /*
 
-	
-
-	@Test
-	public void testQuickSort() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRecursiveQuick() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPartition() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testShuffleMyArray() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testMergeSortIterative() {
