@@ -88,7 +88,6 @@ public class SortComparisonTest {
 		double [] aOld = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
 		
 		SortComparison.shuffleMyArray(a);
-		
 		assertFalse("Checking shuffleMyArray for sorted array",Arrays.equals(aOld, a));
 	}
     
@@ -132,7 +131,21 @@ public class SortComparisonTest {
 
 	@Test
 	public void testMerge() {
-		//TODO
+		
+		double [] a = {4.0,3.0};
+		double [] aux = new double [a.length];
+		double [] aMergedExpected = {3.0,4.0};
+		
+		double [] b = {3.0,4.0,5.0,1.0,2.0};
+		double [] bux = new double [b.length];
+		double [] bMergedExpected = {1.0,2.0,3.0,4.0,5.0};
+		
+		SortComparison.merge(a, aux, 0, 0, a.length-1);
+		SortComparison.merge(b, bux, 0, 2, b.length-1);
+		
+		assertTrue("Checking merge for unsorted array",Arrays.equals(aMergedExpected, a));
+		assertTrue("Checking merge for unsorted array",Arrays.equals(bMergedExpected, b));
+		
 	}
     
 	@Test
