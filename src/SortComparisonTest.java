@@ -1,4 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,9 +49,13 @@ public class SortComparisonTest {
     // ----------------------------------------------------------
     @Test
 	public void testInsertionSort() {
+    	
     	double [] a = {4.0,3.0,2.0,10.0,12.0, 1.0,5.0,6.0};
-    	double [] aSorted = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
-    	assertEquals("Checking insertionSort for unsorted array",aSorted,SortComparison.insertionSort(a));
+    	
+    	double [] aSortedExpeded = {1.0,2.0,3.0,4.0,5.0,6.0,10.0,12.0};
+    	double [] aSorted = SortComparison.insertionSort(a);
+    	
+    	assertTrue("Checking insertionSort for unsorted array",Arrays.equals(aSortedExpeded, aSorted));
 
 	}
     
