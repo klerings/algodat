@@ -169,19 +169,19 @@ import java.util.Random;
     	int size = a.length;
     	int low = 0;
     	int high = size-1;
-    	double [] aux = new double [size];
+    	double [] aux = Arrays.copyOf(a,size);
     	for (int b=1; b <= high-low; b = 2*b) {
     		for (int i = low; i<high; i += 2*b) {
     			int from = i;
     			int mid = i + b - 1;
-    			int to = Integer.min(1+2*b-1, high);
+    			int to = Integer.min(i+2*b-1, high);
     			
     			merge(a,aux,from,mid,to);
     		}
     	}
     	return a;
 	
-    }//end mergesortIterative
+    }
     
     
     
