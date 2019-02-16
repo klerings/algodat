@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertEquals;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -89,12 +91,12 @@ import java.util.Scanner;
     		
     		// move marker i from first element towards end of array
     		// until you reach an element that is bigger than pivot
-    		while(Double.compare(a[++i], pivot)<0) {	
-    			
+    		while(Double.compare(a[++i], pivot)<0) {	    			
     			// break when reaching end of array
-    			if(i==high) {
+    			/*if(i==high) {
     				break;
     			}
+    			*/
     		}
     		
     		// move marker j from last element towards beginning of array
@@ -102,9 +104,10 @@ import java.util.Scanner;
     		while(Double.compare(pivot,a[--j])<0) {
     			
     			// break when reaching beginning of array
-    			if(j==low) {
+    			/*if(j==low) {
     				break;
     			}
+    			*/
     		}
     		
     		// in case markers cross, swap pivot with j
@@ -180,7 +183,7 @@ import java.util.Scanner;
     			
     			int from = i;
     			int mid = i + b - 1;
-    			int to = Integer.min(i+2*b-1, high);
+    			int to = Math.min(i+2*b-1, high);
     			
     			merge(a,aux,from,mid,to);
     		}
@@ -284,6 +287,8 @@ import java.util.Scanner;
     public static void main(String[] args) {
 
         //todo: do experiments as per assignment instructions
+    	//-> experiments in SortComparisonTest.java
+    	
     }
 
  }

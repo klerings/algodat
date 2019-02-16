@@ -17,7 +17,7 @@ import org.junit.runners.JUnit4;
 /**
  *  Test class for SortComparison.java
  *
- *  @author
+ *  @author Alina Klerings
  *  @version HT 2019
  *  
  *  3) Algorithm performance comparison
@@ -133,6 +133,7 @@ public class SortComparisonTest {
 	public void testPartition() {
     	double [] a = {5.0,8.0,11.0,4.0,9.0,2.0,3.0,1.0};
     	assertEquals(4,SortComparison.partition(a, 0, a.length-1));
+
 	}
     
     @Test
