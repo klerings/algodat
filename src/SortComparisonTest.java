@@ -23,15 +23,15 @@ import org.junit.runners.JUnit4;
  *  3) Algorithm performance comparison
  *  (times in milliseconds)
  *  
- *  file/INSERT/QUICK/MERGE RECURSIVE/MERGE ITERATIVE/SELECTION
+ *  f/	INSERT/	QUICK/	MERGE RECURSIVE/	MERGE ITERATIVE/	SELECTION
  *  ----------------------------------------------------------------------
- *  10 random/0.349207/x/x/x/x
- *  100 random/0.460005/x/x/x/x
- *  1000 random/9.897849/x/x/x/x
- *  1000 few unique/7.830202/x/x/x/x
- *  1000 nearly ordered/x/x/x/x/x
- *  1000 reverse order/x/x/x/x/x
- *  1000 sorted/x/x/x/x/x
+ *  10 random/0.35/0.21/0.13/0.15/0.13
+ *  100 random/0.46/0.20/0.08/0.05/0.11
+ *  1000 random/9.90/0.81/0.21/0.33/7.39
+ *  1000 few unique/7.83/0.36/0.19/0.20/2.74
+ *  1000 nearly ordered/13.46/0.35/0.11/0.24/1.00
+ *  1000 reverse order/0.8/0.25/0.11/0.23/0.38
+ *  1000 sorted/0.38/0.19/0.10/0.14/0.34
  *  
  */
 @RunWith(JUnit4.class)
@@ -197,12 +197,18 @@ public class SortComparisonTest {
      */
     public static void main(String[] args)
     {
-        //read in file and create array of doubles
-    	int x = 1000;
-    	double [] doubles = new double [x];
-    	int counter = 0;
-    	  Scanner scan;
-    	    File file = new File("./files_to_sort/numbers1000Duplicates.txt");
+        String [] sortingAlgorithms = {"insertionSort","quickSort","mergeSortRecursive","mergeSortIterative","selectionSort"};
+        int s = 4;
+    	int [] inputSize = {10,100,1000,1000,1000,1000,1000};
+    	String [] inputName = {"numbers10","numbers100","numbers1000","numbers1000Duplicates","numbersNearlyOrdered1000","numbersReverse1000","numbersSorted1000"};
+    	
+		//read in file and create array of doubles
+    	for (int i=0;i<7;i++) {
+    	
+    		double [] doubles = new double [inputSize[i]];
+    		int counter = 0;
+    		Scanner scan;
+    	    File file = new File(String.format("./files_to_sort/%s.txt", inputName[i]));
     	    try {
     	        scan = new Scanner(file);
     	        while(scan.hasNext())
@@ -214,12 +220,21 @@ public class SortComparisonTest {
     	    } catch (FileNotFoundException e1) {
     	            e1.printStackTrace();
     	    }
-    	//time the sorting of the array
-    	    long startTime = System.nanoTime();
-    	    double [] aSorted = SortComparison.insertionSort(doubles);
-    	    long endTime = System.nanoTime();
-    	    double duration = (endTime - startTime)/1e6; 	//in milliseconds
-    	    System.out.println(duration+" milliseconds");
+    	    
+    	    //sort array and stop time
+    	    double duration = 0;
+    	   	for (int j=0;j<3;j++) {
+    	   		long startTime = System.nanoTime();
+    	   		double [] aSorted = SortComparison.selectionSort(doubles);
+    	       	long endTime = System.nanoTime();
+            	duration += (endTime - startTime)/1e6;  //in milliseconds
+   	    	}
+    	   	duration = duration/3;
+        	System.out.println(String.format("Duration for %s for %d entries in %s is %e milliseconds",sortingAlgorithms[s],inputSize[i],inputName[i],duration));
+    	   	
+   	    }
+
+    	
     }
     
     
