@@ -28,11 +28,39 @@ import org.junit.runners.JUnit4;
  *  10 random/0.35/0.21/0.13/0.15/0.13
  *  100 random/0.46/0.20/0.08/0.05/0.11
  *  1000 random/9.90/0.81/0.21/0.33/7.39
- *  1000 few unique/7.83/0.36/0.19/0.20/2.74
- *  1000 nearly ordered/13.46/0.35/0.11/0.24/1.00
+ *  1000 few unique/2.30/0.36/0.19/0.20/2.74
+ *  1000 nearly ordered/0.44/0.35/0.11/0.24/1.00
  *  1000 reverse order/0.8/0.25/0.11/0.23/0.38
  *  1000 sorted/0.38/0.19/0.10/0.14/0.34
  *  
+ *  a) 
+ *  -> insertionSort & selectionSort 
+ *  -> both have a quadratic average running time, so the size of n carries 
+ *  weight really quickly for randomly ordered arrays
+ *  
+ *  b)
+ *  -> insertionSort (0.38 milliseconds for sorted, 9.90 for random)
+ *  -> insertionSort minimizes the number of comparisons, so that the best running
+ *  time is linear (for sorted arrays) whereas the worst case ends up being quadratic
+ *  
+ *  c)
+ *  -> best: mergeSortRecursive (n lg n guarantee)
+ *  -> worst: insertionSort (linear in best case and quadratic in worst)
+ *  
+ *  d) -
+ *  -> I did not really notice a difference between recursive and iterative
+ *  mergeSort. Maybe the recursive one was slightly faster but this might also
+ *  be due to a too small test series.
+ *  
+ *  e)
+ *  10 random: mergeRecusive (0.13) & selection (0.13)
+ *  100 random: mergeIterative (0.05)
+ *  1000 random: mergeRecursive (0.21)
+ *  1000 few unique: mergeRecursive (0.19)
+ *  1000 nearly ordered: mergeRecursive (0.11)
+ *  1000 reverse: mergeRecursive (0.11)
+ *  1000 sorted: mergeRecursive (0.10)
+
  */
 @RunWith(JUnit4.class)
 public class SortComparisonTest {
@@ -198,7 +226,7 @@ public class SortComparisonTest {
     public static void main(String[] args)
     {
         String [] sortingAlgorithms = {"insertionSort","quickSort","mergeSortRecursive","mergeSortIterative","selectionSort"};
-        int s = 4;
+        int s = 0;
     	int [] inputSize = {10,100,1000,1000,1000,1000,1000};
     	String [] inputName = {"numbers10","numbers100","numbers1000","numbers1000Duplicates","numbersNearlyOrdered1000","numbersReverse1000","numbersSorted1000"};
     	
@@ -225,7 +253,7 @@ public class SortComparisonTest {
     	    double duration = 0;
     	   	for (int j=0;j<3;j++) {
     	   		long startTime = System.nanoTime();
-    	   		double [] aSorted = SortComparison.selectionSort(doubles);
+    	   		double [] aSorted = SortComparison.insertionSort(doubles);
     	       	long endTime = System.nanoTime();
             	duration += (endTime - startTime)/1e6;  //in milliseconds
    	    	}
