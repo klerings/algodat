@@ -93,10 +93,10 @@ import java.util.Scanner;
     		// until you reach an element that is bigger than pivot
     		while(Double.compare(a[++i], pivot)<0) {	    			
     			// break when reaching end of array
-    			/*if(i==high) {
+    			if(i==high) {
+    				System.out.println("i==high");
     				break;
     			}
-    			*/
     		}
     		
     		// move marker j from last element towards beginning of array
@@ -104,18 +104,20 @@ import java.util.Scanner;
     		while(Double.compare(pivot,a[--j])<0) {
     			
     			// break when reaching beginning of array
-    			/*if(j==low) {
-    				break;
-    			}
-    			*/
+    			//if(j==low) {
+    				//System.out.println("j==low");
+    				//break;
+    			//}
     		}
     		
     		// in case markers cross, swap pivot with j
     		if (i >= j) {
+				System.out.println("i>=j");
     			break;
     		}
     		
     		// swap small element with big element
+    		System.out.println("swap");
     		swap(a,i,j);
     	}
     	// move pivot to its k
